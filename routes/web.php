@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\DashboardController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -24,4 +25,12 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__.'/auth.php';
+
+Route::prefix('api')->middleware('api')->group(function () {
+    Route::get('/restaurants', [DashboardController::class, 'restaurants']);
+    Route::get('/restaurants/{id}/analytics', [DashboardController::class, 'restaurantAnalytics']);
+    Route::get('/top-restaurants', [DashboardController::class, 'topRestaurants']);
+    Route::get('/orders/filter', [DashboardController::class, 'filteredOrders']);
+});
+
+require __DIR__ . '/auth.php';

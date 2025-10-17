@@ -15,7 +15,7 @@ return new class extends Migration {
                 ->constrained('restaurants')
                 ->onDelete('cascade');
 
-            $table->decimal('amount', 10, 2);
+            $table->decimal('order_amount', 10, 2);
             $table->timestamp('order_time');
             $table->timestamps();
         });

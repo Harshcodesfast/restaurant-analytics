@@ -6,9 +6,10 @@ class Order extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'restaurant_id',
-        'amount',
-        'order_time',
+        "id",
+        "restaurant_id",
+        "order_amount",
+        "order_time"
     ];
     // Relationship: Each order belongs to one restaurant
     public function restaurant()
