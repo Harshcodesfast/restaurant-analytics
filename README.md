@@ -52,13 +52,13 @@ create database\database.sqlite
 ###5️⃣ Generate the application key
 
 ```bash
-artisan key:generate
+php artisan key:generate
 ```
 
 ###6️⃣ Run migrations and seed demo data
 
 ```bash
-artisan migrate --seed
+php artisan migrate --seed
 This will create tables and insert sample restaurant records.
 ```
 
