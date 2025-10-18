@@ -112,8 +112,17 @@ class DashboardController extends Controller
 
         $peakHours = [];
         foreach ($orders->groupBy(fn($o) => Carbon::parse($o->order_time)->format('Y-m-d')) as $day => $dayOrders) {
-            $hourCounts = $dayOrders->groupBy(fn($o) => Carbon::parse($o->order_time)->format('H'))->map->count();
-            $peakHours[$day] = $hourCounts->sortDesc()->keys()->first() ?? null;
+            $hourCounts = $dayOrders
+                ->groupBy(fn($o) => Carbon::parse($o->order_time)->format('H'))
+                ->map->count();
+
+            $topHour = $hourCounts->sortDesc()->keys()->first();
+            $orderCount = $hourCounts[$topHour] ?? 0;
+
+            $peakHours[$day] = [
+                'hour' => $topHour,
+                'orders' => $orderCount,
+            ];
         }
 
         // ✅ Step 3: Merge both datasets

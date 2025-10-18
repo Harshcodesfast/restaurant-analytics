@@ -1,26 +1,34 @@
-import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
-import { Head } from '@inertiajs/react';
+import React, { useState } from "react";
+import RestaurantTable from "../Components/RestaurantTable";
+import AnalyticsChart from "../Components/AnalyticsChart";
+import TopRestaurants from "../Components/TopRestaurants";
+import RestaurantPerformanceTable from "@/Components/RestaurantPerformanceTable";
 
 export default function Dashboard() {
-    return (
-        <AuthenticatedLayout
-            header={
-                <h2 className="text-xl font-semibold leading-tight text-gray-800 dark:text-gray-200">
-                    Dashboard
-                </h2>
-            }
-        >
-            <Head title="Dashboard" />
+    const [selectedRestaurant, setSelectedRestaurant] = useState(null);
 
-            <div className="py-12">
-                <div className="mx-auto max-w-7xl sm:px-6 lg:px-8">
-                    <div className="overflow-hidden bg-white shadow-sm sm:rounded-lg dark:bg-gray-800">
-                        <div className="p-6 text-gray-900 dark:text-gray-100">
-                            You're logged in!
-                        </div>
-                    </div>
+    return (
+        <div className="p-6 space-y-6">
+            <h1 className="text-3xl font-bold text-gray-800">
+                🍽️ Restaurant Dashboard
+            </h1>
+
+            <div className="grid md:grid-cols-3 gap-6">
+                <div className="md:col-span-2 bg-white rounded-lg shadow p-4">
+                    <RestaurantTable onSelect={setSelectedRestaurant} />
+                </div>
+
+                <div className="bg-white rounded-lg shadow p-4">
+                    <TopRestaurants />
                 </div>
             </div>
-        </AuthenticatedLayout>
+
+            <div className="bg-white rounded-lg shadow p-4">
+                <AnalyticsChart restaurant={selectedRestaurant} />
+            </div>
+            <div className="bg-white rounded-lg shadow p-4">
+                <RestaurantPerformanceTable />
+            </div>
+        </div>
     );
 }
