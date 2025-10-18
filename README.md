@@ -40,6 +40,7 @@ cd restaurant-analytics
 ```bash
 Make sure you have Composer installed, then run:
 composer install
+npm install
 ```
 
 ###3️⃣ Copy the environment file
