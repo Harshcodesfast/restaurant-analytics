@@ -59,8 +59,8 @@ php artisan key:generate
 
 ```bash
 php artisan migrate --seed
-This will create tables and insert sample restaurant records.
 ```
+This will create tables and insert sample restaurant records.
 
 ###7️⃣ Start the development server
 
