@@ -6,10 +6,9 @@ use Illuminate\Http\Request;
 use App\Models\Restaurant;
 use App\Models\Order;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Validation\ValidationException;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Cache;
-use Illuminate\Pagination\CursorPaginator;
+
 
 class DashboardController extends Controller
 {

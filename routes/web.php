@@ -3,6 +3,8 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Foundation\Application;
+
 use Inertia\Inertia;
 
 // 👇 Root route now shows Dashboard directly
@@ -23,6 +25,13 @@ Route::prefix('api')->middleware('api')->group(function () {
     Route::get('/restaurants/{id}/analytics', [DashboardController::class, 'restaurantAnalytics']);
     Route::get('/top-restaurants', [DashboardController::class, 'topRestaurants']);
     Route::get('/orders/filter', [DashboardController::class, 'filteredOrders']);
+});
+
+Route::get('/welcome', function () {
+    return Inertia::render('Welcome', [
+        'laravelVersion' => Application::VERSION,
+        'phpVersion' => PHP_VERSION,
+    ]);
 });
 
 require __DIR__ . '/auth.php';
