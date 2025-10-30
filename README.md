@@ -1,7 +1,6 @@
 # 🍽️ Restaurant Analytics
 
-A Laravel-based web application for managing and analyzing restaurant data — including locations, cuisines, and ratings.  
-Built with simplicity in mind using **Laravel**, **SQLite**, and **artisan seeders** for easy setup and local development.
+A Laravel-based web application for managing and analyzing restaurant data — including locations, cuisines, and ratings. This is a minimum viable product (MVP) built with simplicity in mind using Laravel, SQLite, and artisan seeders for easy setup and local development.
 
 ---
 
@@ -60,8 +59,8 @@ php artisan key:generate
 
 ```bash
 php artisan migrate --seed
-This will create tables and insert sample restaurant records.
 ```
+This will create tables and insert sample restaurant records.
 
 ###7️⃣ Start the development server
 
